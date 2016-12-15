@@ -303,6 +303,15 @@ public final class DropDown: UIView {
 	@objc public dynamic var textColor = DPDConstant.UI.TextColor {
 		didSet { reloadAllComponents() }
 	}
+  
+  /**
+   The colors of each cell's text.
+   
+   Changing the indexes color automatically reloads the drop down.
+   */
+  public dynamic var indexesColor: [UIColor]? {
+    didSet { reloadAllComponents() }
+  }
 
 	/**
 	The font of the text for each cells of the drop down.
@@ -1009,7 +1018,11 @@ extension DropDown: UITableViewDataSource, UITableViewDelegate {
 			cell.accessibilityIdentifier = localizationKeysDataSource[index]
 		}
 		
-		cell.optionLabel.textColor = textColor
+    if let color = indexesColor?[index] {
+      cell.optionLabel.textColor = color
+    } else {
+      cell.optionLabel.textColor = textColor
+    }
 		cell.optionLabel.font = textFont
 		cell.selectedBackgroundColor = selectionBackgroundColor
 		

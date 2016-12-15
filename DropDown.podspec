@@ -18,7 +18,7 @@ Pod::Spec.new do |s|
 
   s.platform = :ios, '8.0'
   s.source = {
-    :git => "https://github.com/AssistoLab/DropDown.git",
+    :git => "https://github.com/johnnyoin/DropDown.git",
     :tag => "v#{s.version.to_s}"
   }
 
